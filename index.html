@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="austriApp – Apps from the Alps. Einfache, durchdachte Apps für iOS und Android.">
+  <title>austriApp – Apps from the Alps</title>
+  <link rel="icon" type="image/png" href="austriapp_512x512.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:    #cc2020;
+      --black:  #111111;
+      --gray:   #555555;
+      --light:  #f7f7f7;
+      --border: #e8e8e8;
+      --r:      14px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #fff;
+      color: var(--black);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem; height: 90px;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { text-decoration: none; display: flex; align-items: center; }
+    .nav-brand img { height: 75px; width: 75px; border-radius: 17px; }
+    nav ul { list-style: none; display: flex; gap: 2.5rem; }
+    nav ul a {
+      color: var(--gray); text-decoration: none; font-size: 0.875rem;
+      transition: color 0.15s;
+    }
+    nav ul a:hover { color: var(--black); }
+
+    /* ── HERO ────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 6rem;
+    }
+    .hero-center-logo {
+      width: 410px; height: 410px;
+      border-radius: 88px;
+      margin-bottom: 2rem;
+    }
+    .hero h1 { display: none; }
+    .hero-alps {
+      font-size: clamp(1.2rem, 3vw, 1.75rem);
+      color: var(--gray);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      margin-bottom: 3rem;
+    }
+    .hero-sub { display: none; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--black); color: #fff;
+      font-weight: 700; font-size: 0.95rem;
+      padding: 0.9rem 2rem; border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .btn-primary:hover { background: #000; transform: translateY(-1px); }
+    .hero-made {
+      margin-top: 3.5rem;
+      font-size: 0.78rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #bbb;
+    }
+    .hero-made span { color: var(--red); font-weight: 700; }
+    .hero-values {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      max-width: 860px; width: 100%;
+      margin-top: 4rem;
+    }
+    .hv-item {
+      background: #fff;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.875rem; font-weight: 600;
+      color: var(--black);
+      display: flex; flex-direction: column; gap: 0.35rem;
+    }
+    .hv-item span {
+      font-size: 0.68rem; font-weight: 800;
+      letter-spacing: 0.12em; color: var(--red);
+    }
+    @media (max-width: 640px) {
+      .hero-values { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── DIVIDER ─────────────────────────────── */
+    .divider { height: 1px; background: var(--border); margin: 0 2.5rem; }
+
+    /* ── APPS ────────────────────────────────── */
+    #apps { padding: 7rem 2rem; }
+    .container { max-width: 860px; margin: 0 auto; }
+    .eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--red);
+      margin-bottom: 0.6rem;
+    }
+    #apps h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; letter-spacing: -1.5px;
+      margin-bottom: 3rem; line-height: 1.1;
+    }
+    .app-card {
+      display: grid; grid-template-columns: 96px 1fr;
+      gap: 2.5rem; align-items: start;
+      background: var(--light);
+      border-radius: 20px;
+      padding: 2.5rem;
+    }
+    .app-card-icon {
+      width: 96px; height: 96px;
+      border-radius: 22px;
+      background: #2a2a2a;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
+    .app-card h3 {
+      font-size: 1.5rem; font-weight: 800;
+      letter-spacing: -0.5px; margin-bottom: 0.4rem;
+    }
+    .app-card-desc {
+      color: var(--gray); font-size: 0.95rem;
+      margin-bottom: 1.25rem; max-width: 520px;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+    .tag {
+      font-size: 0.75rem; font-weight: 600;
+      background: #fff; border: 1px solid var(--border);
+      color: var(--gray);
+      padding: 0.25rem 0.7rem; border-radius: 100px;
+    }
+    .store-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .store-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--black); color: #fff;
+      font-size: 0.82rem; font-weight: 600;
+      padding: 0.55rem 1.1rem; border-radius: 10px;
+      text-decoration: none; transition: background 0.15s;
+    }
+    .store-btn:hover { background: #333; }
+    .store-btn.soon { background: #ddd; color: #999; cursor: default; }
+    .store-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+
+    /* ── PHILOSOPHY ──────────────────────────── */
+    #philosophy {
+      padding: 7rem 2rem;
+      background: var(--light);
+    }
+    #philosophy h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; letter-spacing: -1.5px;
+      margin-bottom: 3rem; line-height: 1.1;
+    }
+    .phil-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+    }
+    .phil-item {
+      background: #fff;
+      padding: 2rem 1.75rem;
+    }
+    .phil-num {
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em;
+      color: var(--red); margin-bottom: 1rem;
+    }
+    .phil-item h4 {
+      font-size: 1rem; font-weight: 800;
+      margin-bottom: 0.4rem; letter-spacing: -0.3px;
+    }
+    .phil-item p { color: var(--gray); font-size: 0.875rem; line-height: 1.55; }
+
+    /* ── CONTACT ─────────────────────────────── */
+    #contact {
+      padding: 7rem 2rem;
+      text-align: center;
+    }
+    #contact h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; letter-spacing: -1.5px;
+      margin-bottom: 0.75rem;
+    }
+    #contact p {
+      color: var(--gray); max-width: 420px;
+      margin: 0 auto 2rem; font-size: 1rem;
+    }
+    .mail-link {
+      display: inline-block;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--red); text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.15s;
+    }
+    .mail-link:hover { border-color: var(--red); }
+
+    /* ── FOOTER ──────────────────────────────── */
+    footer {
+      border-top: 3px solid var(--red);
+      background: var(--black);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    footer p { color: rgba(255,255,255,0.35); font-size: 0.8rem; margin-bottom: 0.5rem; }
+    footer a {
+      color: rgba(255,255,255,0.4); text-decoration: none;
+      margin: 0 0.75rem; font-size: 0.8rem;
+      transition: color 0.15s;
+    }
+    footer a:hover { color: #fff; }
+
+    /* ── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 640px) {
+      nav ul { display: none; }
+      .app-card { grid-template-columns: 1fr; }
+      .hero h1 { letter-spacing: -2px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#"><img src="austriapp_512x512.png" alt="austriApp"></a>
+  <ul>
+    <li><a href="#apps">Apps</a></li>
+    <li><a href="#philosophy">Philosophie</a></li>
+    <li><a href="#contact">Kontakt</a></li>
+    <li><a href="impressum.html">Impressum</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-center-logo" src="austriapp_512x512.png" alt="austriApp">
+  <a class="btn-primary" href="#apps">Unsere Apps entdecken</a>
+  <p class="hero-made">Made with ♥ in <span>Austria</span></p>
+  <div class="hero-values">
+    <div class="hv-item"><span>01</span>Sofort nutzbar</div>
+    <div class="hv-item"><span>02</span>Deine Daten bleiben deins</div>
+    <div class="hv-item"><span>03</span>Für alle Menschen</div>
+    <div class="hv-item"><span>04</span>Eine Sache. Richtig.</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- APPS -->
+<section id="apps">
+  <div class="container">
+    <p class="eyebrow">Unsere Apps</p>
+    <h2>Einfache Tools.<br>Echte Wirkung.</h2>
+
+    <div class="app-card">
+      <img class="app-card-icon" src="adaptive-icon.png" alt="VoiceButler">
+      <div>
+        <h3>VoiceButler</h3>
+        <p class="app-card-desc">Echtzeit-Sprache-zu-Text für Schwerhörige, laute Umgebungen und Präsentationen. Kein Account, kein Login — einfach sprechen.</p>
+        <div class="tags">
+          <span class="tag">13 Sprachen</span>
+          <span class="tag">Offline-Modus</span>
+          <span class="tag">Kein Account</span>
+          <span class="tag">Barrierefreiheit</span>
+          <span class="tag">3,99 €</span>
+        </div>
+        <div class="store-row">
+          <a class="store-btn" href="#">
+            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store
+          </a>
+          <a class="store-btn soon" href="#" tabindex="-1">
+            <svg viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.64.22.99.14l12.12-6.97-2.54-2.54L3.18 23.76zM.49 1.1C.18 1.42 0 1.92 0 2.58v18.84c0 .66.18 1.16.49 1.48l.08.07 10.56-10.56v-.25L.57 1.03.49 1.1zM20.49 10.64l-2.87-1.65-2.86 2.86 2.86 2.86 2.88-1.66c.82-.47.82-1.94-.01-2.41zM4.17.24L16.3 7.21l-2.54 2.54L4.17.24z"/></svg>
+            Google Play — bald
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+  <div class="container">
+    <p class="eyebrow">Philosophie</p>
+    <h2>Reduced to the max.</h2>
+    <div class="phil-grid">
+      <div class="phil-item">
+        <p class="phil-num">01</p>
+        <h4>Sofort nutzbar</h4>
+        <p>Keine Einrichtung, kein Tutorial. Du öffnest die App und weißt sofort was zu tun ist.</p>
+      </div>
+      <div class="phil-item">
+        <p class="phil-num">02</p>
+        <h4>Deine Daten bleiben deins</h4>
+        <p>Kein Account, keine Cloud, kein Tracking. Was auf deinem Gerät passiert, bleibt dort.</p>
+      </div>
+      <div class="phil-item">
+        <p class="phil-num">03</p>
+        <h4>Für alle Menschen</h4>
+        <p>Barrierefreiheit ist kein Feature — es ist der Ausgangspunkt. Technik soll verbinden.</p>
+      </div>
+      <div class="phil-item">
+        <p class="phil-num">04</p>
+        <h4>Eine Sache. Richtig.</h4>
+        <p>Wir lösen ein Problem — so gut wie möglich, so einfach wie nötig.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="eyebrow">Kontakt & Support</p>
+    <h2>Wir helfen gerne.</h2>
+    <p>Fragen, Feedback oder Probleme mit einer unserer Apps? Wir antworten persönlich.</p>
+    <a class="mail-link" href="mailto:support@austriapp.at">support@austriapp.at</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 austriApp · Christian Weißinger · Gresten, Österreich</p>
+  <p>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+    <a href="mailto:support@austriapp.at">support@austriapp.at</a>
+  </p>
+</footer>
+
+</body>
+</html>
