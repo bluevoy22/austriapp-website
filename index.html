@@ -1,11 +1,120 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de-AT">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="austriApp – Apps from the Alps. Einfache, durchdachte Apps für iOS und Android.">
-  <title>austriApp – Apps from the Alps</title>
+
+  <!-- ── PRIMARY SEO ──────────────────────────────────────────────────── -->
+  <title>austriApp – iOS & Android Apps aus Österreich | VoiceButler</title>
+  <meta name="description" content="austriApp entwickelt einfache, datenschutzfreundliche Apps für iOS und Android. VoiceButler: Echtzeit-Sprache-zu-Text in 13 Sprachen – offline, ohne Abo, ohne Account.">
+  <meta name="keywords" content="VoiceButler, Sprache zu Text, Speech to Text App, iOS App Österreich, Android App, Echtzeit Transkription, Spracherkennung offline, App für Schwerhörige, Barrierefreiheit App, austriApp">
+  <meta name="author" content="austriApp – Christian Weißinger">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="language" content="de-AT">
+  <link rel="canonical" href="https://austriapp.at/">
+
+  <!-- ── OPEN GRAPH (Facebook, LinkedIn, WhatsApp) ─────────────────── -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://austriapp.at/">
+  <meta property="og:title" content="austriApp – iOS & Android Apps aus Österreich">
+  <meta property="og:description" content="Einfache, datenschutzfreundliche Apps made in Austria. VoiceButler: Sprache zu Text in Echtzeit, 13 Sprachen, offline, kein Abo.">
+  <meta property="og:image" content="https://austriapp.at/austriapp_512x512.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:locale" content="de_AT">
+  <meta property="og:site_name" content="austriApp">
+
+  <!-- ── TWITTER / X CARD ──────────────────────────────────────────── -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="austriApp – Apps from the Alps">
+  <meta name="twitter:description" content="VoiceButler: Echtzeit-Sprache-zu-Text für iOS & Android. Offline. Kein Abo. 13 Sprachen.">
+  <meta name="twitter:image" content="https://austriapp.at/austriapp_512x512.png">
+
+  <!-- ── SCHEMA.ORG STRUCTURED DATA ───────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://austriapp.at/#organization",
+        "name": "austriApp",
+        "url": "https://austriapp.at",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://austriapp.at/austriapp_512x512.png",
+          "width": 512,
+          "height": 512
+        },
+        "description": "Einfache, datenschutzfreundliche Apps für iOS und Android – entwickelt in Österreich.",
+        "email": "support@austriapp.at",
+        "foundingLocation": {
+          "@type": "Place",
+          "name": "Bergland, Niederösterreich, Österreich"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "AT"
+        },
+        "sameAs": [
+          "https://apps.apple.com/developer/id1772067960",
+          "https://play.google.com/store/apps/developer?id=austriApp"
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://austriapp.at/#voicebutler",
+        "name": "VoiceButler",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": ["iOS", "Android"],
+        "description": "Echtzeit-Sprache-zu-Text App in 13 Sprachen. Offline-fähig, kein Account erforderlich, kein Abo, einmaliger Kauf. Ideal für Schwerhörige, laute Umgebungen und Präsentationen.",
+        "url": "https://austriapp.at/#apps",
+        "downloadUrl": [
+          "https://apps.apple.com/app/id6766316479",
+          "https://play.google.com/store/apps/details?id=at.austriapp.voicebutler"
+        ],
+        "offers": {
+          "@type": "Offer",
+          "price": "3.99",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "ratingCount": "1"
+        },
+        "author": {
+          "@id": "https://austriapp.at/#organization"
+        },
+        "inLanguage": ["de", "en", "fr", "es", "it", "pt", "nl", "pl", "cs", "sk", "hr", "hu", "ro"],
+        "featureList": [
+          "Offline-Spracherkennung",
+          "13 Sprachen",
+          "Kein Account",
+          "Kein Abo",
+          "Barrierefreiheit",
+          "Sitzungsprotokoll"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://austriapp.at/#website",
+        "url": "https://austriapp.at",
+        "name": "austriApp",
+        "description": "Apps from the Alps – einfache, datenschutzfreundliche iOS & Android Apps aus Österreich.",
+        "publisher": {
+          "@id": "https://austriapp.at/#organization"
+        },
+        "inLanguage": "de-AT"
+      }
+    ]
+  }
+  </script>
+
   <link rel="icon" type="image/png" href="austriapp_512x512.png">
+  <link rel="apple-touch-icon" href="austriapp_512x512.png">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -37,8 +146,12 @@
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
-    .nav-brand { text-decoration: none; display: flex; align-items: center; }
+    .nav-brand { text-decoration: none; display: flex; align-items: center; gap: 0.75rem; }
     .nav-brand img { height: 75px; width: 75px; border-radius: 17px; }
+    .nav-brand-name {
+      font-size: 1rem; font-weight: 700; color: var(--black);
+      display: none;
+    }
     nav ul { list-style: none; display: flex; gap: 2.5rem; }
     nav ul a {
       color: var(--gray); text-decoration: none; font-size: 0.875rem;
@@ -55,19 +168,25 @@
       padding: 8rem 2rem 6rem;
     }
     .hero-center-logo {
-      width: 410px; height: 410px;
-      border-radius: 88px;
+      width: 120px; height: 120px;
+      border-radius: 28px;
       margin-bottom: 2rem;
     }
-    .hero h1 { display: none; }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
     .hero-alps {
-      font-size: clamp(1.2rem, 3vw, 1.75rem);
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
       color: var(--gray);
       font-weight: 400;
-      letter-spacing: 0.04em;
-      margin-bottom: 3rem;
+      letter-spacing: 0.02em;
+      margin-bottom: 2.5rem;
+      max-width: 480px;
     }
-    .hero-sub { display: none; }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 0.5rem;
       background: var(--black); color: #fff;
@@ -163,9 +282,7 @@
     }
     .store-btn:hover { background: #333; }
     .store-btn.soon { background: #ddd; color: #999; cursor: default; }
-    .app-card-wip {
-      opacity: 0.75;
-    }
+    .app-card-wip { opacity: 0.75; }
     .app-card-dark { background: #2a2a2a; }
     .app-card-dark h3 { color: #fff; }
     .app-card-dark .app-card-desc { color: #aaa; }
@@ -255,16 +372,18 @@
     @media (max-width: 640px) {
       nav ul { display: none; }
       .app-card { grid-template-columns: 1fr; }
-      .hero h1 { letter-spacing: -2px; }
     }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <a class="nav-brand" href="#"><img src="austriapp_512x512.png" alt="austriApp"></a>
-  <ul>
+<nav aria-label="Hauptnavigation">
+  <a class="nav-brand" href="/" aria-label="austriApp – Startseite">
+    <img src="austriapp_512x512.png" alt="austriApp Logo" width="75" height="75">
+    <span class="nav-brand-name">austriApp</span>
+  </a>
+  <ul role="list">
     <li><a href="#apps">Apps</a></li>
     <li><a href="#philosophy">Philosophie</a></li>
     <li><a href="#contact">Kontakt</a></li>
@@ -273,113 +392,148 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <img class="hero-center-logo" src="austriapp_512x512.png" alt="austriApp">
+<section class="hero" aria-label="Willkommen bei austriApp">
+  <img class="hero-center-logo"
+       src="austriapp_512x512.png"
+       alt="austriApp – Apps from the Alps"
+       width="120" height="120">
+  <h1>austriApp</h1>
+  <p class="hero-alps">Einfache iOS &amp; Android Apps aus Österreich – datenschutzfreundlich, ohne Abo, für alle.</p>
   <a class="btn-primary" href="#apps">Unsere Apps entdecken</a>
   <p class="hero-made">Made with ♥ in <span>Austria</span></p>
-  <div class="hero-values">
-    <div class="hv-item"><span>01</span>Sofort nutzbar</div>
-    <div class="hv-item"><span>02</span>Deine Daten bleiben deins</div>
-    <div class="hv-item"><span>03</span>Für alle Menschen</div>
-    <div class="hv-item"><span>04</span>Eine Sache. Richtig.</div>
+  <div class="hero-values" role="list" aria-label="Unsere Prinzipien">
+    <div class="hv-item" role="listitem"><span>01</span>Sofort nutzbar</div>
+    <div class="hv-item" role="listitem"><span>02</span>Deine Daten bleiben deins</div>
+    <div class="hv-item" role="listitem"><span>03</span>Für alle Menschen</div>
+    <div class="hv-item" role="listitem"><span>04</span>Eine Sache. Richtig.</div>
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="divider" role="separator"></div>
 
 <!-- APPS -->
-<section id="apps">
+<section id="apps" aria-labelledby="apps-heading">
   <div class="container">
     <p class="eyebrow">Unsere Apps</p>
-    <h2>Einfache Tools.<br>Echte Wirkung.</h2>
+    <h2 id="apps-heading">Einfache Tools.<br>Echte Wirkung.</h2>
 
-    <div class="app-card">
-      <img class="app-card-icon" src="adaptive-icon.png" alt="VoiceButler">
+    <!-- VoiceButler -->
+    <article class="app-card" aria-label="VoiceButler App">
+      <img class="app-card-icon"
+           src="adaptive-icon.png"
+           alt="VoiceButler App Icon – Echtzeit Spracherkennung"
+           width="96" height="96">
       <div>
         <h3>VoiceButler</h3>
-        <p class="app-card-desc">Echtzeit-Sprache-zu-Text für Schwerhörige, laute Umgebungen und Präsentationen. Kein Account, kein Login — einfach sprechen.</p>
-        <div class="tags">
+        <p class="app-card-desc">
+          Echtzeit-Spracherkennung für iOS &amp; Android: Gesprochenes wird sofort als Text angezeigt –
+          in 13 Sprachen, offline nutzbar, ohne Account und ohne Abo. Ideal für Schwerhörige,
+          laute Umgebungen, Meetings und Präsentationen.
+        </p>
+        <div class="tags" aria-label="Eigenschaften">
           <span class="tag">13 Sprachen</span>
           <span class="tag">Offline-Modus</span>
           <span class="tag">Kein Account</span>
+          <span class="tag">Kein Abo</span>
           <span class="tag">Barrierefreiheit</span>
-          <span class="tag">3,99 €</span>
+          <span class="tag">Einmaliger Kauf · 3,99 €</span>
         </div>
         <div class="store-row">
-          <a class="store-btn" href="https://apps.apple.com/app/id6766316479" target="_blank" rel="noopener">App Store</a>
-          <a class="store-btn soon" href="#" tabindex="-1">Google Play — coming soon</a>
+          <a class="store-btn"
+             href="https://apps.apple.com/app/id6766316479"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="VoiceButler im App Store herunterladen">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store
+          </a>
+          <a class="store-btn"
+             href="https://play.google.com/store/apps/details?id=at.austriapp.voicebutler"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="VoiceButler bei Google Play herunterladen">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.18 23.76c.3.17.64.22.97.15l12.5-7.21-2.79-2.79-10.68 9.85zm-1.12-20.09c-.06.2-.06.43 0 .65v15.36c0 .22.06.44.17.63l.1.09 8.59-8.59v-.2L2.06 3.67zm14.96 10.96l-2.87-2.87V6.3l2.87 2.87 3.22 1.86c.92.53.92 1.39 0 1.92l-3.22 1.68zM4.15.24L16.65 7.5l-2.79 2.79L3.18.44C3.51.37 3.85.41 4.15.58v-.34z"/></svg>
+            Google Play
+          </a>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="app-card app-card-wip app-card-dark" style="margin-top:1.5rem;">
-      <img class="app-card-icon" src="RepUpFitness_Logo.png" alt="RepUp Fitness">
+    <!-- RepUp Fitness -->
+    <article class="app-card app-card-wip app-card-dark" style="margin-top:1.5rem;" aria-label="RepUp Fitness App – in Entwicklung">
+      <img class="app-card-icon"
+           src="RepUpFitness_Logo.png"
+           alt="RepUp Fitness App Icon – Workout Tracking"
+           width="96" height="96">
       <div>
-        <span class="wip-badge">In Entwicklung</span>
+        <span class="wip-badge" aria-label="Status: In Entwicklung">In Entwicklung</span>
         <h3>RepUp Fitness</h3>
-        <p class="app-card-desc">Dein smarter Trainingsbegleiter – Übungen tracken, Fortschritt sehen, Ziele erreichen. Reduced to the max.</p>
-        <div class="tags">
+        <p class="app-card-desc">
+          Dein smarter Trainingsbegleiter – Krafttraining und Workout-Tracking ohne Abo und ohne Cloud.
+          Übungen tracken, Fortschritt sehen, Ziele erreichen. Reduced to the max.
+        </p>
+        <div class="tags" aria-label="Eigenschaften">
           <span class="tag">Krafttraining</span>
           <span class="tag">Workout-Tracking</span>
           <span class="tag">Kein Abo</span>
-          <span class="tag">iOS & Android</span>
+          <span class="tag">iOS &amp; Android</span>
         </div>
         <div class="store-row">
-          <a class="store-btn soon" href="#" tabindex="-1">App Store — coming soon</a>
-          <a class="store-btn soon" href="#" tabindex="-1">Google Play — coming soon</a>
+          <a class="store-btn soon" href="#" tabindex="-1" aria-disabled="true" aria-label="App Store – demnächst verfügbar">App Store – demnächst</a>
+          <a class="store-btn soon" href="#" tabindex="-1" aria-disabled="true" aria-label="Google Play – demnächst verfügbar">Google Play – demnächst</a>
         </div>
       </div>
-    </div>
+    </article>
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="divider" role="separator"></div>
 
 <!-- PHILOSOPHY -->
-<section id="philosophy">
+<section id="philosophy" aria-labelledby="philosophy-heading">
   <div class="container">
     <p class="eyebrow">Philosophie</p>
-    <h2>Reduced to the max.</h2>
+    <h2 id="philosophy-heading">Reduced to the max.</h2>
     <div class="phil-grid">
       <div class="phil-item">
-        <p class="phil-num">01</p>
+        <p class="phil-num" aria-hidden="true">01</p>
         <h4>Sofort nutzbar</h4>
         <p>Keine Einrichtung, kein Tutorial. Du öffnest die App und weißt sofort was zu tun ist.</p>
       </div>
       <div class="phil-item">
-        <p class="phil-num">02</p>
+        <p class="phil-num" aria-hidden="true">02</p>
         <h4>Deine Daten bleiben deins</h4>
         <p>Kein Account, keine Cloud, kein Tracking. Was auf deinem Gerät passiert, bleibt dort.</p>
       </div>
       <div class="phil-item">
-        <p class="phil-num">03</p>
+        <p class="phil-num" aria-hidden="true">03</p>
         <h4>Für alle Menschen</h4>
-        <p>Barrierefreiheit ist kein Feature — es ist der Ausgangspunkt. Technik soll verbinden.</p>
+        <p>Barrierefreiheit ist kein Feature – es ist der Ausgangspunkt. Technik soll verbinden, nicht ausschließen.</p>
       </div>
       <div class="phil-item">
-        <p class="phil-num">04</p>
+        <p class="phil-num" aria-hidden="true">04</p>
         <h4>Eine Sache. Richtig.</h4>
-        <p>Wir lösen ein Problem — so gut wie möglich, so einfach wie nötig.</p>
+        <p>Wir lösen ein Problem – so gut wie möglich, so einfach wie nötig. Kein Feature-Overload.</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="divider" role="separator"></div>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" aria-labelledby="contact-heading">
   <div class="container">
-    <p class="eyebrow">Kontakt & Support</p>
-    <h2>Wir helfen gerne.</h2>
-    <p>Fragen, Feedback oder Probleme mit einer unserer Apps? Wir antworten persönlich.</p>
-    <a class="mail-link" href="mailto:support@austriapp.at">support@austriapp.at</a>
+    <p class="eyebrow">Kontakt &amp; Support</p>
+    <h2 id="contact-heading">Wir helfen gerne.</h2>
+    <p>Fragen, Feedback oder Probleme mit einer unserer Apps? Wir antworten persönlich – kein Bot, kein Ticket-System.</p>
+    <a class="mail-link" href="mailto:support@austriapp.at" aria-label="E-Mail an support@austriapp.at senden">support@austriapp.at</a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 austriApp · Christian Weißinger · Bergland, Österreich</p>
+  <p>© 2026 austriApp · Christian Weißinger · Bergland, Niederösterreich, Österreich</p>
   <p>
     <a href="impressum.html">Impressum</a>
     <a href="datenschutz.html">Datenschutz</a>
