@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#cc2020">
 
   <!-- ── PRIMARY SEO ──────────────────────────────────────────────────── -->
-  <title>austriApp – iOS & Android Apps aus Österreich | VoiceButler</title>
+  <title>austriApp – iOS &amp; Android Apps aus Österreich | VoiceButler</title>
   <meta name="description" content="austriApp entwickelt einfache, datenschutzfreundliche Apps für iOS und Android. VoiceButler: Echtzeit-Sprache-zu-Text in 13 Sprachen – offline, ohne Abo, ohne Account.">
   <meta name="keywords" content="VoiceButler, Sprache zu Text, Speech to Text App, iOS App Österreich, Android App, Echtzeit Transkription, Spracherkennung offline, App für Schwerhörige, Barrierefreiheit App, austriApp">
   <meta name="author" content="austriApp – Christian Weißinger">
@@ -16,19 +17,20 @@
   <!-- ── OPEN GRAPH (Facebook, LinkedIn, WhatsApp) ─────────────────── -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://austriapp.at/">
-  <meta property="og:title" content="austriApp – iOS & Android Apps aus Österreich">
-  <meta property="og:description" content="Einfache, datenschutzfreundliche Apps made in Austria. VoiceButler: Sprache zu Text in Echtzeit, 13 Sprachen, offline, kein Abo.">
-  <meta property="og:image" content="https://austriapp.at/austriapp_512x512.png">
-  <meta property="og:image:width" content="512">
-  <meta property="og:image:height" content="512">
+  <meta property="og:title" content="austriApp – Apps aus Österreich, die einfach funktionieren">
+  <meta property="og:description" content="VoiceButler: Sprache wird sichtbar. Echtzeit-Untertitel in 13 Sprachen, offline, kein Abo, kein Account. Einmalig 3,99 €.">
+  <meta property="og:image" content="https://austriapp.at/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="austriApp – Sprache wird sichtbar. VoiceButler für iOS und Android.">
   <meta property="og:locale" content="de_AT">
   <meta property="og:site_name" content="austriApp">
 
   <!-- ── TWITTER / X CARD ──────────────────────────────────────────── -->
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="austriApp – Apps from the Alps">
-  <meta name="twitter:description" content="VoiceButler: Echtzeit-Sprache-zu-Text für iOS & Android. Offline. Kein Abo. 13 Sprachen.">
-  <meta name="twitter:image" content="https://austriapp.at/austriapp_512x512.png">
+  <meta name="twitter:description" content="VoiceButler: Echtzeit-Sprache-zu-Text für iOS &amp; Android. Offline. Kein Abo. 13 Sprachen.">
+  <meta name="twitter:image" content="https://austriapp.at/og-image.png">
 
   <!-- ── SCHEMA.ORG STRUCTURED DATA ───────────────────────────────── -->
   <script type="application/ld+json">
@@ -67,8 +69,9 @@
         "name": "VoiceButler",
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": ["iOS", "Android"],
-        "description": "Echtzeit-Sprache-zu-Text App in 13 Sprachen. Offline-fähig, kein Account erforderlich, kein Abo, einmaliger Kauf. Ideal für Schwerhörige, laute Umgebungen und Präsentationen.",
+        "description": "Echtzeit-Sprache-zu-Text App in 13 Sprachen. Offline-fähig, kein Account erforderlich, kein Abo, einmaliger Kauf. Für gehörlose, schwerhörige und stimmlose Menschen, laute Umgebungen und Präsentationen.",
         "url": "https://austriapp.at/#apps",
+        "screenshot": "https://austriapp.at/voicebutler-screen.png",
         "downloadUrl": [
           "https://apps.apple.com/app/id6766316479",
           "https://play.google.com/store/apps/details?id=at.austriapp.voicebutler"
@@ -79,18 +82,15 @@
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock"
         },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "5",
-          "ratingCount": "1"
-        },
         "author": {
           "@id": "https://austriapp.at/#organization"
         },
-        "inLanguage": ["de", "en", "fr", "es", "it", "pt", "nl", "pl", "cs", "sk", "hr", "hu", "ro"],
+        "inLanguage": ["de", "en", "fr", "es", "it", "pt", "nl", "pl", "sv", "tr", "ja", "ko", "zh"],
         "featureList": [
           "Offline-Spracherkennung",
           "13 Sprachen",
+          "Schreibtafel für stimmlose Menschen",
+          "Antwort-Presets",
           "Kein Account",
           "Kein Abo",
           "Barrierefreiheit",
@@ -119,89 +119,168 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --red:    #cc2020;
-      --black:  #111111;
-      --gray:   #555555;
-      --light:  #f7f7f7;
-      --border: #e8e8e8;
-      --r:      14px;
+      --red:      #cc2020;
+      --red-soft: rgba(204,32,32,0.08);
+      --text:     #111111;
+      --muted:    #555555;
+      --faint:    #bbbbbb;
+      --bg:       #ffffff;
+      --surface:  #f7f7f7;
+      --card:     #ffffff;
+      --border:   #e8e8e8;
+      --shadow:   0 2px 12px rgba(0,0,0,0.10);
+      --nav-bg:   rgba(255,255,255,0.94);
+      --r:        14px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --red:      #ff4d4d;
+        --red-soft: rgba(255,77,77,0.10);
+        --text:     #f2f3f5;
+        --muted:    #a7adb8;
+        --faint:    #6b7280;
+        --bg:       #0f1117;
+        --surface:  #161922;
+        --card:     #1c2029;
+        --border:   #2a2f3a;
+        --shadow:   0 2px 16px rgba(0,0,0,0.5);
+        --nav-bg:   rgba(15,17,23,0.92);
+      }
     }
 
     html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
 
     body {
-      background: #fff;
-      color: var(--black);
+      background: var(--bg);
+      color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     /* ── NAV ────────────────────────────────── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2.5rem; height: 90px;
-      background: rgba(255,255,255,0.94);
+      padding: 0 clamp(1rem, 4vw, 2.5rem); height: 64px;
+      background: var(--nav-bg);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
-    .nav-brand { text-decoration: none; display: flex; align-items: center; gap: 0.75rem; }
-    .nav-brand img { height: 75px; width: 75px; border-radius: 17px; }
+    .nav-brand { text-decoration: none; display: flex; align-items: center; gap: 0.65rem; }
+    .nav-brand img { height: 40px; width: 40px; border-radius: 10px; }
     .nav-brand-name {
-      font-size: 1rem; font-weight: 700; color: var(--black);
-      display: none;
+      font-size: 1.05rem; font-weight: 800; color: var(--text);
+      letter-spacing: -0.3px;
     }
-    nav ul { list-style: none; display: flex; gap: 2.5rem; }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
     nav ul a {
-      color: var(--gray); text-decoration: none; font-size: 0.875rem;
+      color: var(--muted); text-decoration: none; font-size: 0.875rem;
       transition: color 0.15s;
     }
-    nav ul a:hover { color: var(--black); }
+    nav ul a:hover, nav ul a:focus-visible { color: var(--text); }
+
+    .nav-toggle {
+      display: none;
+      background: none; border: 0; cursor: pointer;
+      padding: 0.5rem; color: var(--text);
+      line-height: 0;
+    }
+    .nav-toggle svg { width: 26px; height: 26px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    @media (max-width: 720px) {
+      .nav-toggle { display: block; }
+      nav ul {
+        position: absolute; top: 64px; left: 0; right: 0;
+        flex-direction: column; gap: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+      nav ul[hidden] { display: none; }
+      nav ul li { border-top: 1px solid var(--border); }
+      nav ul a { display: block; padding: 1rem clamp(1rem, 4vw, 2.5rem); font-size: 1rem; }
+    }
 
     /* ── HERO ────────────────────────────────── */
     .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center;
-      padding: 8rem 2rem 6rem;
+      padding: 8rem clamp(1.25rem, 4vw, 2.5rem) 4rem;
+      max-width: 1100px; margin: 0 auto;
     }
-    .hero-center-logo {
-      width: 410px; height: 410px;
-      border-radius: 88px;
-      margin-bottom: 1.5rem;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(2rem, 5vw, 4.5rem);
+      align-items: center;
     }
     .hero h1 {
-      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
       font-weight: 800;
-      letter-spacing: -0.5px;
-      line-height: 1;
-      margin-bottom: 0.75rem;
+      letter-spacing: -1.5px;
+      line-height: 1.05;
+      margin-bottom: 1rem;
     }
-    .hero-alps {
-      font-size: clamp(1rem, 2.5vw, 1.3rem);
-      color: var(--gray);
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      margin-bottom: 2.5rem;
-      max-width: 480px;
+    .hero h1 em { font-style: normal; color: var(--red); }
+    .hero-lead {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--muted);
+      max-width: 30rem;
+      margin-bottom: 1.25rem;
     }
-    .btn-primary {
+    .hero-price {
+      font-size: 0.95rem; font-weight: 700;
+      margin-bottom: 2rem; color: var(--text);
+    }
+    .hero-price span { color: var(--muted); font-weight: 400; }
+
+    .hero-cta { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .btn-primary, .btn-ghost {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--black); color: #fff;
-      font-weight: 700; font-size: 0.95rem;
-      padding: 0.9rem 2rem; border-radius: 100px;
+      font-weight: 700; font-size: 0.9rem;
+      padding: 0.8rem 1.5rem; border-radius: 100px;
       text-decoration: none;
-      transition: background 0.15s, transform 0.15s;
+      transition: background 0.15s, transform 0.15s, border-color 0.15s;
     }
-    .btn-primary:hover { background: #000; transform: translateY(-1px); }
+    .btn-primary { background: var(--text); color: var(--bg); }
+    .btn-primary:hover { transform: translateY(-1px); }
+    .btn-ghost {
+      border: 1px solid var(--border); color: var(--text);
+    }
+    .btn-ghost:hover { border-color: var(--text); transform: translateY(-1px); }
+    .btn-primary svg, .btn-ghost svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+
     .hero-made {
-      margin-top: 3.5rem;
-      font-size: 0.78rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: #bbb;
+      font-size: 0.72rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--faint);
     }
     .hero-made span { color: var(--red); font-weight: 700; }
+
+    /* Geräterahmen */
+    .phone {
+      justify-self: center;
+      width: 100%; max-width: 290px;
+      border: 10px solid #1b1d24;
+      border-radius: 38px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.28);
+      overflow: hidden;
+      background: #1b1d24;
+      line-height: 0;
+    }
+    .phone img { width: 100%; height: auto; display: block; }
+
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .phone { max-width: 250px; }
+      .hero-lead { max-width: none; }
+    }
+
+    /* Werte-Leiste */
     .hero-values {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -210,14 +289,13 @@
       border: 1px solid var(--border);
       border-radius: var(--r);
       overflow: hidden;
-      max-width: 860px; width: 100%;
       margin-top: 4rem;
     }
     .hv-item {
-      background: #fff;
+      background: var(--card);
       padding: 1.25rem 1.5rem;
       font-size: 0.875rem; font-weight: 600;
-      color: var(--black);
+      color: var(--text);
       display: flex; flex-direction: column; gap: 0.35rem;
     }
     .hv-item span {
@@ -232,64 +310,90 @@
     .divider { height: 1px; background: var(--border); margin: 0 2.5rem; }
 
     /* ── APPS ────────────────────────────────── */
-    #apps { padding: 7rem 2rem; }
-    .container { max-width: 860px; margin: 0 auto; }
+    #apps { padding: 6rem clamp(1.25rem, 4vw, 2rem); }
+    .container { max-width: 900px; margin: 0 auto; }
     .eyebrow {
       font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
       text-transform: uppercase; color: var(--red);
       margin-bottom: 0.6rem;
     }
-    #apps h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800; letter-spacing: -1.5px;
+    #apps h2, #philosophy h2, #contact h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; letter-spacing: -1.2px;
       margin-bottom: 3rem; line-height: 1.1;
     }
     .app-card {
-      display: grid; grid-template-columns: 96px 1fr;
-      gap: 2.5rem; align-items: start;
-      background: var(--light);
+      display: grid; grid-template-columns: 88px 1fr;
+      gap: clamp(1.25rem, 4vw, 2.5rem); align-items: start;
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 2.5rem;
+      padding: clamp(1.5rem, 4vw, 2.5rem);
     }
     .app-card-icon {
-      width: 96px; height: 96px;
-      border-radius: 22px;
-      background: #2a2a2a;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      width: 88px; height: 88px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      object-fit: cover;
     }
     .app-card h3 {
       font-size: 1.5rem; font-weight: 800;
       letter-spacing: -0.5px; margin-bottom: 0.4rem;
     }
     .app-card-desc {
-      color: var(--gray); font-size: 0.95rem;
-      margin-bottom: 1.25rem; max-width: 520px;
+      color: var(--muted); font-size: 0.95rem;
+      margin-bottom: 1.25rem; max-width: 34rem;
     }
     .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
     .tag {
       font-size: 0.75rem; font-weight: 600;
-      background: #fff; border: 1px solid var(--border);
-      color: var(--gray);
+      background: var(--card); border: 1px solid var(--border);
+      color: var(--muted);
       padding: 0.25rem 0.7rem; border-radius: 100px;
     }
+    .tag-price {
+      background: var(--red-soft); border-color: var(--red);
+      color: var(--red); font-weight: 700;
+    }
+
+    /* Screenshot-Galerie */
+    .shots {
+      display: flex; gap: 0.9rem;
+      margin-bottom: 1.75rem;
+      overflow-x: auto;
+      padding-bottom: 0.4rem;
+      scrollbar-width: thin;
+    }
+    .shot { flex: 0 0 auto; width: 132px; }
+    .shot img {
+      width: 100%; height: auto; display: block;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--card);
+    }
+    .shot figcaption {
+      font-size: 0.72rem; color: var(--muted);
+      margin-top: 0.45rem; text-align: center;
+    }
+
     .store-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
     .store-btn {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--black); color: #fff;
+      background: var(--text); color: var(--bg);
       font-size: 0.82rem; font-weight: 600;
-      padding: 0.55rem 1.1rem; border-radius: 10px;
-      text-decoration: none; transition: background 0.15s;
+      padding: 0.6rem 1.1rem; border-radius: 10px;
+      text-decoration: none; transition: opacity 0.15s;
     }
-    .store-btn:hover { background: #333; }
-    .store-btn.soon { background: #ddd; color: #999; cursor: default; }
-    .app-card-wip { opacity: 0.75; }
-    .app-card-dark { background: #2a2a2a; }
-    .app-card-dark h3 { color: #fff; }
-    .app-card-dark .app-card-desc { color: #aaa; }
+    .store-btn:hover { opacity: 0.85; }
+    .store-btn.soon {
+      background: transparent; color: var(--faint);
+      border: 1px dashed var(--border); cursor: default;
+    }
+    .app-card-wip { opacity: 0.8; }
     .wip-badge {
       display: inline-block;
-      background: rgba(204,32,32,0.08);
-      border: 1px solid rgba(204,32,32,0.25);
+      background: var(--red-soft);
+      border: 1px solid var(--red);
       color: var(--red); font-size: 0.72rem; font-weight: 700;
       letter-spacing: 0.1em; text-transform: uppercase;
       padding: 0.25rem 0.75rem; border-radius: 100px;
@@ -297,15 +401,15 @@
     }
     .store-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
 
+    @media (max-width: 640px) {
+      .app-card { grid-template-columns: 1fr; }
+      .app-card-icon { width: 72px; height: 72px; }
+    }
+
     /* ── PHILOSOPHY ──────────────────────────── */
     #philosophy {
-      padding: 7rem 2rem;
-      background: var(--light);
-    }
-    #philosophy h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800; letter-spacing: -1.5px;
-      margin-bottom: 3rem; line-height: 1.1;
+      padding: 6rem clamp(1.25rem, 4vw, 2rem);
+      background: var(--surface);
     }
     .phil-grid {
       display: grid;
@@ -316,10 +420,7 @@
       border-radius: var(--r);
       overflow: hidden;
     }
-    .phil-item {
-      background: #fff;
-      padding: 2rem 1.75rem;
-    }
+    .phil-item { background: var(--card); padding: 2rem 1.75rem; }
     .phil-num {
       font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em;
       color: var(--red); margin-bottom: 1rem;
@@ -328,20 +429,13 @@
       font-size: 1rem; font-weight: 800;
       margin-bottom: 0.4rem; letter-spacing: -0.3px;
     }
-    .phil-item p { color: var(--gray); font-size: 0.875rem; line-height: 1.55; }
+    .phil-item p { color: var(--muted); font-size: 0.875rem; line-height: 1.55; }
 
     /* ── CONTACT ─────────────────────────────── */
-    #contact {
-      padding: 7rem 2rem;
-      text-align: center;
-    }
-    #contact h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800; letter-spacing: -1.5px;
-      margin-bottom: 0.75rem;
-    }
+    #contact { padding: 6rem clamp(1.25rem, 4vw, 2rem); text-align: center; }
+    #contact h2 { margin-bottom: 0.75rem; }
     #contact p {
-      color: var(--gray); max-width: 420px;
+      color: var(--muted); max-width: 28rem;
       margin: 0 auto 2rem; font-size: 1rem;
     }
     .mail-link {
@@ -351,27 +445,28 @@
       border-bottom: 2px solid transparent;
       transition: border-color 0.15s;
     }
-    .mail-link:hover { border-color: var(--red); }
+    .mail-link:hover, .mail-link:focus-visible { border-color: var(--red); }
 
     /* ── FOOTER ──────────────────────────────── */
     footer {
       border-top: 3px solid var(--red);
-      background: var(--black);
+      background: #111111;
       padding: 2.5rem 2rem;
       text-align: center;
     }
-    footer p { color: rgba(255,255,255,0.35); font-size: 0.8rem; margin-bottom: 0.5rem; }
+    footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-bottom: 0.5rem; }
     footer a {
-      color: rgba(255,255,255,0.4); text-decoration: none;
+      color: rgba(255,255,255,0.5); text-decoration: none;
       margin: 0 0.75rem; font-size: 0.8rem;
       transition: color 0.15s;
     }
     footer a:hover { color: #fff; }
 
-    /* ── RESPONSIVE ──────────────────────────── */
-    @media (max-width: 640px) {
-      nav ul { display: none; }
-      .app-card { grid-template-columns: 1fr; }
+    /* Fokus sichtbar für Tastaturbedienung */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 3px;
+      border-radius: 4px;
     }
   </style>
 </head>
@@ -380,10 +475,13 @@
 <!-- NAV -->
 <nav aria-label="Hauptnavigation">
   <a class="nav-brand" href="/" aria-label="austriApp – Startseite">
-    <img src="austriapp_512x512.png" alt="austriApp Logo" width="75" height="75">
+    <img src="austriapp_512x512.png" alt="" width="40" height="40">
     <span class="nav-brand-name">austriApp</span>
   </a>
-  <ul role="list">
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Menü öffnen">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+  </button>
+  <ul id="navMenu" role="list">
     <li><a href="#apps">Apps</a></li>
     <li><a href="#philosophy">Philosophie</a></li>
     <li><a href="#contact">Kontakt</a></li>
@@ -392,15 +490,38 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero" aria-label="Willkommen bei austriApp">
-  <img class="hero-center-logo"
-       src="austriapp_512x512.png"
-       alt="austriApp – Apps from the Alps"
-       width="120" height="120">
-  <h1>austriApp</h1>
-  <p class="hero-alps">Einfache iOS &amp; Android Apps aus Österreich – datenschutzfreundlich, ohne Abo, für alle.</p>
-  <a class="btn-primary" href="#apps">Unsere Apps entdecken</a>
-  <p class="hero-made">Made with ♥ in <span>Austria</span></p>
+<section class="hero" aria-label="VoiceButler – Sprache wird sichtbar">
+  <div class="hero-grid">
+    <div>
+      <h1>Sprache wird <em>sichtbar</em>.</h1>
+      <p class="hero-lead">
+        VoiceButler verwandelt Gesprochenes sofort in große, gut lesbare Untertitel –
+        und gibt stimmlosen Menschen per Schreibtafel eine sichtbare Stimme.
+        13 Sprachen, offline nutzbar, ohne Account.
+      </p>
+      <p class="hero-price">
+        Einmalig 3,99 € <span>· kein Abo, keine Werbung, keine Datensammlung</span>
+      </p>
+      <div class="hero-cta">
+        <a class="btn-primary" href="https://apps.apple.com/app/id6766316479" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store
+        </a>
+        <a class="btn-ghost" href="https://play.google.com/store/apps/details?id=at.austriapp.voicebutler" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.18 23.76c.3.17.64.22.97.15l12.5-7.21-2.79-2.79-10.68 9.85zm-1.12-20.09c-.06.2-.06.43 0 .65v15.36c0 .22.06.44.17.63l.1.09 8.59-8.59v-.2L2.06 3.67zm14.96 10.96l-2.87-2.87V6.3l2.87 2.87 3.22 1.86c.92.53.92 1.39 0 1.92l-3.22 1.68zM4.15.24L16.65 7.5l-2.79 2.79L3.18.44C3.51.37 3.85.41 4.15.58v-.34z"/></svg>
+          Google Play
+        </a>
+      </div>
+      <p class="hero-made">Made with ♥ in <span>Austria</span></p>
+    </div>
+
+    <div class="phone">
+      <img src="voicebutler-screen.png"
+           alt="VoiceButler auf dem iPhone: Der gesprochene Satz „Ich weiß dass du mich nicht hören kannst aber jetzt kannst du lesen was ich sage“ erscheint in großer Schrift."
+           width="640" height="1298" loading="eager" fetchpriority="high">
+    </div>
+  </div>
+
   <div class="hero-values" role="list" aria-label="Unsere Prinzipien">
     <div class="hv-item" role="listitem"><span>01</span>Sofort nutzbar</div>
     <div class="hv-item" role="listitem"><span>02</span>Deine Daten bleiben deins</div>
@@ -420,37 +541,50 @@
     <!-- VoiceButler -->
     <article class="app-card" aria-label="VoiceButler App">
       <img class="app-card-icon"
-           src="adaptive-icon.png"
-           alt="VoiceButler App Icon – Echtzeit Spracherkennung"
-           width="96" height="96">
+           src="VoiceButler_Icon.png"
+           alt="VoiceButler App-Icon"
+           width="88" height="88" loading="lazy">
       <div>
         <h3>VoiceButler</h3>
         <p class="app-card-desc">
-          Echtzeit-Spracherkennung für iOS &amp; Android: Gesprochenes wird sofort als Text angezeigt –
-          in 13 Sprachen, offline nutzbar, ohne Account und ohne Abo. Ideal für Schwerhörige,
-          laute Umgebungen, Meetings und Präsentationen.
+          Echtzeit-Spracherkennung für iOS &amp; Android: Gesprochenes wird sofort als großer Text
+          angezeigt – in 13 Sprachen, offline nutzbar, ohne Account und ohne Abo. Für gehörlose und
+          schwerhörige Menschen, für stimmlose Menschen mit Schreibtafel und Antwort-Presets,
+          für laute Umgebungen, Meetings und Präsentationen.
         </p>
         <div class="tags" aria-label="Eigenschaften">
+          <span class="tag tag-price">Einmalig 3,99 €</span>
           <span class="tag">13 Sprachen</span>
           <span class="tag">Offline-Modus</span>
+          <span class="tag">Schreibtafel</span>
+          <span class="tag">Antwort-Presets</span>
           <span class="tag">Kein Account</span>
           <span class="tag">Kein Abo</span>
           <span class="tag">Barrierefreiheit</span>
-          <span class="tag">Einmaliger Kauf · 3,99 €</span>
         </div>
+
+        <div class="shots" role="group" aria-label="Screenshots von VoiceButler">
+          <figure class="shot">
+            <img src="shot-presets.png" alt="Antwort-Presets wie Yes, No, Thank you, Water, WC, Help und Pain." width="420" height="888" loading="lazy">
+            <figcaption>Antwort-Presets</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="shot-sessions.png" alt="Sitzungsarchiv mit gespeicherten Gesprächen." width="420" height="852" loading="lazy">
+            <figcaption>Sitzungsarchiv</figcaption>
+          </figure>
+        </div>
+
         <div class="store-row">
           <a class="store-btn"
              href="https://apps.apple.com/app/id6766316479"
-             target="_blank"
-             rel="noopener noreferrer"
+             target="_blank" rel="noopener noreferrer"
              aria-label="VoiceButler im App Store herunterladen">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
             App Store
           </a>
           <a class="store-btn"
              href="https://play.google.com/store/apps/details?id=at.austriapp.voicebutler"
-             target="_blank"
-             rel="noopener noreferrer"
+             target="_blank" rel="noopener noreferrer"
              aria-label="VoiceButler bei Google Play herunterladen">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.18 23.76c.3.17.64.22.97.15l12.5-7.21-2.79-2.79-10.68 9.85zm-1.12-20.09c-.06.2-.06.43 0 .65v15.36c0 .22.06.44.17.63l.1.09 8.59-8.59v-.2L2.06 3.67zm14.96 10.96l-2.87-2.87V6.3l2.87 2.87 3.22 1.86c.92.53.92 1.39 0 1.92l-3.22 1.68zM4.15.24L16.65 7.5l-2.79 2.79L3.18.44C3.51.37 3.85.41 4.15.58v-.34z"/></svg>
             Google Play
@@ -460,13 +594,13 @@
     </article>
 
     <!-- RepUp Fitness -->
-    <article class="app-card app-card-wip app-card-dark" style="margin-top:1.5rem;" aria-label="RepUp Fitness App – in Entwicklung">
+    <article class="app-card app-card-wip" style="margin-top:1.5rem;" aria-label="RepUp Fitness App – in Entwicklung">
       <img class="app-card-icon"
            src="RepUpFitness_Logo.png"
-           alt="RepUp Fitness App Icon – Workout Tracking"
-           width="96" height="96">
+           alt="RepUp Fitness App-Icon"
+           width="88" height="88" loading="lazy">
       <div>
-        <span class="wip-badge" aria-label="Status: In Entwicklung">In Entwicklung</span>
+        <span class="wip-badge">In Entwicklung</span>
         <h3>RepUp Fitness</h3>
         <p class="app-card-desc">
           Dein smarter Trainingsbegleiter – Krafttraining und Workout-Tracking ohne Abo und ohne Cloud.
@@ -479,8 +613,8 @@
           <span class="tag">iOS &amp; Android</span>
         </div>
         <div class="store-row">
-          <a class="store-btn soon" href="#" tabindex="-1" aria-disabled="true" aria-label="App Store – demnächst verfügbar">App Store – demnächst</a>
-          <a class="store-btn soon" href="#" tabindex="-1" aria-disabled="true" aria-label="Google Play – demnächst verfügbar">Google Play – demnächst</a>
+          <span class="store-btn soon">App Store – demnächst</span>
+          <span class="store-btn soon">Google Play – demnächst</span>
         </div>
       </div>
     </article>
@@ -540,6 +674,39 @@
     <a href="mailto:support@austriapp.at">support@austriapp.at</a>
   </p>
 </footer>
+
+<script>
+  (function () {
+    var btn  = document.getElementById('navToggle');
+    var menu = document.getElementById('navMenu');
+    var mq   = window.matchMedia('(max-width: 720px)');
+
+    function apply() {
+      if (mq.matches) {
+        menu.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        menu.hidden = false;
+      }
+    }
+    apply();
+    mq.addEventListener('change', apply);
+
+    btn.addEventListener('click', function () {
+      var open = menu.hidden;
+      menu.hidden = !open;
+      btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    });
+
+    menu.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A' && mq.matches) {
+        menu.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
 
 </body>
 </html>
