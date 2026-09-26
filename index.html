@@ -18,7 +18,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://austriapp.at/">
   <meta property="og:title" content="austriApp – Apps aus Österreich, die einfach funktionieren">
-  <meta property="og:description" content="VoiceButler: Sprache wird sichtbar. Echtzeit-Untertitel in 13 Sprachen, offline, kein Abo, kein Account. Einmalig 3,99 €.">
+  <meta property="og:description" content="VoiceButler: Sprache wird sichtbar. Echtzeit-Untertitel in 13 Sprachen, offline, kein Abo, kein Account. Einmalig 1,99 €.">
   <meta property="og:image" content="https://austriapp.at/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -78,7 +78,7 @@
         ],
         "offers": {
           "@type": "Offer",
-          "price": "3.99",
+          "price": "1.99",
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock"
         },
@@ -131,6 +131,8 @@
       --shadow:   0 2px 12px rgba(0,0,0,0.10);
       --nav-bg:   rgba(255,255,255,0.94);
       --r:        14px;
+      --vb-cyan:   #00cdff;
+      --vb-yellow: #fddf46;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -208,102 +210,170 @@
       nav ul a { display: block; padding: 1rem clamp(1rem, 4vw, 2.5rem); font-size: 1rem; }
     }
 
-    /* ── HERO ────────────────────────────────── */
-    .hero {
-      padding: 8rem clamp(1.25rem, 4vw, 2.5rem) 4rem;
-      max-width: 1100px; margin: 0 auto;
+    /* ── VOICEBUTLER-HERO (nach dem Store-Plakat) ─────
+       Immer dunkelblau, unabhängig vom Farbschema: das Plakat
+       ist das Wiedererkennungsmerkmal in beiden Stores. */
+    @font-face {
+      font-family: "Caveat";
+      src: url("fonts/caveat-700-latin.woff2") format("woff2");
+      font-weight: 700;
+      font-display: swap;
     }
-    .hero-grid {
+
+    .vb {
+      background:
+        radial-gradient(90% 70% at 85% 105%, #0b4d82 0%, transparent 65%),
+        linear-gradient(170deg, #01304f 0%, #00223c 55%, #002a4a 100%);
+      color: #fff;
+      padding: calc(64px + clamp(2rem, 5vw, 3.5rem)) clamp(1.25rem, 4vw, 2.5rem) 0;
+      overflow: hidden;
+    }
+    .vb-inner {
+      max-width: 1100px; margin: 0 auto;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: clamp(2rem, 5vw, 4.5rem);
-      align-items: center;
+      grid-template-areas:
+        "brand visual"
+        "head  visual"
+        "feat  visual"
+        "cta   visual";
+      column-gap: clamp(1.5rem, 4vw, 3.5rem);
     }
-    .hero h1 {
-      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
-      font-weight: 800;
-      letter-spacing: -1.5px;
+    .vb-cyan { color: var(--vb-cyan); }
+
+    .vb-brand {
+      grid-area: brand;
+      display: grid; grid-template-columns: auto 1fr;
+      column-gap: 0.9rem; align-items: center;
+      margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+    }
+    .vb-logo { width: clamp(56px, 7vw, 76px); height: auto; grid-row: span 2; }
+    .vb-name {
+      font-size: clamp(2rem, 4.6vw, 3rem); font-weight: 800;
+      letter-spacing: -1.2px; line-height: 1;
+    }
+    .vb-claim { font-size: clamp(1rem, 2vw, 1.3rem); font-weight: 600; line-height: 1.3; }
+
+    .vb h1 {
+      grid-area: head;
+      font-size: clamp(1.8rem, 4.1vw, 3rem);
+      font-weight: 800; letter-spacing: -1px; line-height: 1.12;
+      margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+    }
+
+    .vb-features {
+      grid-area: feat;
+      list-style: none;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.25rem 1.5rem;
+      margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+    }
+    .vb-features li { display: flex; gap: 0.85rem; align-items: flex-start; }
+    .vb-ico {
+      flex: 0 0 auto;
+      width: 50px; height: 50px; border-radius: 50%;
+      background: var(--c);
+      display: grid; place-items: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    }
+    .vb-ico svg {
+      width: 26px; height: 26px;
+      fill: none; stroke: #fff; stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .vb-features strong {
+      display: block; font-size: 1.02rem; font-weight: 800;
+      color: var(--t); line-height: 1.3; margin-bottom: 0.15rem;
+    }
+    .vb-features p { font-size: 0.9rem; line-height: 1.45; color: rgba(255,255,255,0.88); }
+
+    .vb-cta {
+      grid-area: cta;
+      display: flex; flex-wrap: wrap; align-items: center;
+      gap: 1.25rem 1.5rem;
+      padding-bottom: clamp(2.5rem, 5vw, 4rem);
+    }
+    .vb-price {
+      display: inline-grid; justify-items: center;
+      background: var(--vb-yellow); color: #0b1f3a;
+      padding: 0.7rem 1.6rem 0.8rem;
+      transform: rotate(-5deg);
+      /* Pinselstrich wie auf dem Plakat */
+      clip-path: polygon(3% 14%, 14% 5%, 42% 9%, 70% 1%, 97% 7%, 100% 42%,
+                         97% 86%, 72% 97%, 40% 92%, 10% 100%, 0 68%);
       line-height: 1.05;
-      margin-bottom: 1rem;
     }
-    .hero h1 em { font-style: normal; color: var(--red); }
-    .hero-lead {
-      font-size: clamp(1rem, 2vw, 1.15rem);
-      color: var(--muted);
-      max-width: 30rem;
-      margin-bottom: 1.25rem;
-    }
-    .hero-price {
-      font-size: 0.95rem; font-weight: 700;
-      margin-bottom: 2rem; color: var(--text);
-    }
-    .hero-price span { color: var(--muted); font-weight: 400; }
+    .vb-price span { font-size: 1rem; font-weight: 800; }
+    .vb-price strong { font-size: 2.5rem; font-weight: 900; letter-spacing: -1px; }
 
-    .hero-cta { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
-    .btn-primary, .btn-ghost {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-weight: 700; font-size: 0.9rem;
-      padding: 0.8rem 1.5rem; border-radius: 100px;
-      text-decoration: none;
-      transition: background 0.15s, transform 0.15s, border-color 0.15s;
+    .vb-stores { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .vb-store {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: #000; color: #fff;
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 10px;
+      padding: 0.5rem 1rem 0.55rem 0.8rem;
+      text-decoration: none; line-height: 1.1;
+      transition: transform 0.15s, border-color 0.15s;
     }
-    .btn-primary { background: var(--text); color: var(--bg); }
-    .btn-primary:hover { transform: translateY(-1px); }
-    .btn-ghost {
-      border: 1px solid var(--border); color: var(--text);
+    .vb-store:hover { transform: translateY(-1px); border-color: #fff; }
+    .vb-store svg { width: 24px; height: 24px; fill: currentColor; flex-shrink: 0; }
+    .vb-store span { font-size: 1.15rem; font-weight: 600; }
+    .vb-store small {
+      display: block; font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
     }
-    .btn-ghost:hover { border-color: var(--text); transform: translateY(-1px); }
-    .btn-primary svg, .btn-ghost svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
 
-    .hero-made {
+    .vb-slogan {
+      font-family: "Caveat", "Segoe Print", "Bradley Hand", cursive;
+      font-size: 1.75rem; font-weight: 700; line-height: 1.05;
+      transform: rotate(-6deg);
+    }
+    .vb-slogan::after {
+      content: ""; display: block;
+      height: 4px; width: 85%; margin-top: 0.3rem;
+      background: var(--vb-cyan); border-radius: 4px;
+      transform: rotate(-2deg);
+    }
+    .vb-made {
+      flex-basis: 100%;
       font-size: 0.72rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--faint);
+      text-transform: uppercase; color: rgba(255,255,255,0.55);
     }
-    .hero-made span { color: var(--red); font-weight: 700; }
 
-    /* Geräterahmen */
-    .phone {
-      justify-self: center;
-      width: 100%; max-width: 290px;
-      border: 10px solid #1b1d24;
-      border-radius: 38px;
-      box-shadow: 0 18px 50px rgba(0,0,0,0.28);
-      overflow: hidden;
-      background: #1b1d24;
-      line-height: 0;
+    .vb-visual {
+      grid-area: visual;
+      align-self: center;
+      position: relative;
+      max-width: 540px; justify-self: end;
     }
-    .phone img { width: 100%; height: auto; display: block; }
+    .vb-visual img {
+      width: 100%; height: auto; display: block;
+      /* Alle vier Ränder laufen aus: der Bildhintergrund hinter der Frau
+         ist heller als das Navy und stünde sonst als Rechteck da. */
+      --fade: linear-gradient(to right, transparent 0, #000 16%, #000 92%, transparent 100%),
+              linear-gradient(to bottom, transparent 0, #000 14%, #000 88%, transparent 100%);
+      -webkit-mask-image: var(--fade);
+      -webkit-mask-composite: source-in;
+              mask-image: var(--fade);
+              mask-composite: intersect;
+    }
+    .vb-visual figcaption {
+      text-align: right; padding-right: 9%; margin-top: -0.75rem;
+      font-size: 0.7rem; color: rgba(255,255,255,0.6);
+    }
+
+    .vb a:focus-visible, .app-card-vb a:focus-visible { outline-color: var(--vb-cyan); }
 
     @media (max-width: 860px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .phone { max-width: 250px; }
-      .hero-lead { max-width: none; }
+      .vb-inner {
+        grid-template-columns: 1fr;
+        grid-template-areas: "brand" "head" "visual" "feat" "cta";
+      }
+      .vb-visual { justify-self: center; margin-bottom: 2rem; }
     }
-
-    /* Werte-Leiste */
-    .hero-values {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      overflow: hidden;
-      margin-top: 4rem;
-    }
-    .hv-item {
-      background: var(--card);
-      padding: 1.25rem 1.5rem;
-      font-size: 0.875rem; font-weight: 600;
-      color: var(--text);
-      display: flex; flex-direction: column; gap: 0.35rem;
-    }
-    .hv-item span {
-      font-size: 0.68rem; font-weight: 800;
-      letter-spacing: 0.12em; color: var(--red);
-    }
-    @media (max-width: 640px) {
-      .hero-values { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 560px) {
+      .vb-features { grid-template-columns: 1fr; }
     }
 
     /* ── DIVIDER ─────────────────────────────── */
@@ -330,6 +400,7 @@
       border-radius: 20px;
       padding: clamp(1.5rem, 4vw, 2.5rem);
     }
+    .app-card > div { min-width: 0; }
     .app-card-icon {
       width: 88px; height: 88px;
       border-radius: 20px;
@@ -354,6 +425,29 @@
     .tag-price {
       background: var(--red-soft); border-color: var(--red);
       color: var(--red); font-weight: 700;
+    }
+
+    /* VoiceButler-Karte im Plakatstil */
+    .app-card-vb {
+      background: linear-gradient(160deg, #01304f 0%, #00223c 60%, #0b3a5e 100%);
+      border-color: transparent;
+      color: #fff;
+    }
+    .app-card-vb .app-card-desc { color: rgba(255,255,255,0.85); }
+    .app-card-vb .tag {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9);
+    }
+    .app-card-vb .tag-price {
+      background: var(--vb-yellow); border-color: var(--vb-yellow);
+      color: #0b1f3a; font-weight: 800;
+    }
+    .app-card-vb .shot img { border-color: rgba(255,255,255,0.2); }
+    .app-card-vb .shot figcaption { color: rgba(255,255,255,0.75); }
+    .app-card-vb .store-btn {
+      background: #000; color: #fff;
+      border: 1px solid rgba(255,255,255,0.4);
     }
 
     /* Screenshot-Galerie */
@@ -489,48 +583,69 @@
   </ul>
 </nav>
 
-<!-- HERO -->
-<section class="hero" aria-label="VoiceButler – Sprache wird sichtbar">
-  <div class="hero-grid">
-    <div>
-      <h1>Sprache wird <em>sichtbar</em>.</h1>
-      <p class="hero-lead">
-        VoiceButler verwandelt Gesprochenes sofort in große, gut lesbare Untertitel –
-        und gibt stimmlosen Menschen per Schreibtafel eine sichtbare Stimme.
-        13 Sprachen, offline nutzbar, ohne Account.
-      </p>
-      <p class="hero-price">
-        Einmalig 3,99 € <span>· kein Abo, keine Werbung, keine Datensammlung</span>
-      </p>
-      <div class="hero-cta">
-        <a class="btn-primary" href="https://apps.apple.com/app/id6766316479" target="_blank" rel="noopener noreferrer">
+<!-- HERO: VoiceButler im Stil des Store-Plakats -->
+<section class="vb" aria-label="VoiceButler – Deine Stimme. In Text.">
+  <div class="vb-inner">
+
+    <div class="vb-brand">
+      <svg class="vb-logo" viewBox="0 0 68 60" aria-hidden="true">
+        <path d="M12 4h44a9 9 0 0 1 9 9v24a9 9 0 0 1-9 9H28L15 56V46h-3a9 9 0 0 1-9-9V13a9 9 0 0 1 9-9z"
+              fill="none" stroke="#fff" stroke-width="4.5" stroke-linejoin="round"/>
+        <g stroke="#fff" stroke-width="4" stroke-linecap="round">
+          <path d="M15 21v8M22 16v18M29 20v10"/>
+          <path d="M38 18h15M38 25h15M38 32h15"/>
+        </g>
+      </svg>
+      <p class="vb-name">Voice<span class="vb-cyan">Butler</span></p>
+      <p class="vb-claim">Deine Stimme. In Text.</p>
+    </div>
+
+    <h1>Ich weiß, dass du mich nicht hören kannst, aber mit <span class="vb-cyan">VoiceButler</span> kannst du lesen, was ich sage.</h1>
+
+    <ul class="vb-features">
+      <li>
+        <span class="vb-ico" style="--c:#28a6f6" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9a6 6 0 1 1 12 0c0 3.2-2.4 4.4-3.4 5.6-.8 1-.9 2-1.1 3.1A3.2 3.2 0 0 1 7.3 19"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.6-1.6 2-1.6 3.4"/></svg></span>
+        <div><strong style="--t:#35c6ff">Für Hörgeschädigte</strong><p>Live-Transkription hilft beim Verstehen.</p></div>
+      </li>
+      <li>
+        <span class="vb-ico" style="--c:#35b843" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span>
+        <div><strong style="--t:#5ee06a">Für stille Menschen</strong><p>Sich Gehör verschaffen – mit Schreibtafel und Antwort-Presets.</p></div>
+      </li>
+      <li>
+        <span class="vb-ico" style="--c:#8b4df0" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/></svg></span>
+        <div><strong style="--t:#c7a6ff">Flexibel eingeben</strong><p>Über Presets oder die Tastatur – in großen Buchstaben.</p></div>
+      </li>
+      <li>
+        <span class="vb-ico" style="--c:#0fb8c9" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+        <div><strong style="--t:#35e3ea">Einfach &amp; intuitiv</strong><p>Schnell einsatzbereit – wenn du es brauchst.</p></div>
+      </li>
+    </ul>
+
+    <div class="vb-cta">
+      <p class="vb-price" aria-label="Jetzt nur 1,99 Euro, einmalig"><span>Jetzt nur</span><strong>1,99 €</strong><span>einmalig</span></p>
+      <div class="vb-stores">
+        <a class="vb-store" href="https://apps.apple.com/app/id6766316479" target="_blank" rel="noopener noreferrer" aria-label="VoiceButler im App Store laden">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          App Store
+          <span><small>Laden im</small>App Store</span>
         </a>
-        <a class="btn-ghost" href="https://play.google.com/store/apps/details?id=at.austriapp.voicebutler" target="_blank" rel="noopener noreferrer">
+        <a class="vb-store" href="https://play.google.com/store/apps/details?id=at.austriapp.voicebutler" target="_blank" rel="noopener noreferrer" aria-label="VoiceButler bei Google Play laden">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.18 23.76c.3.17.64.22.97.15l12.5-7.21-2.79-2.79-10.68 9.85zm-1.12-20.09c-.06.2-.06.43 0 .65v15.36c0 .22.06.44.17.63l.1.09 8.59-8.59v-.2L2.06 3.67zm14.96 10.96l-2.87-2.87V6.3l2.87 2.87 3.22 1.86c.92.53.92 1.39 0 1.92l-3.22 1.68zM4.15.24L16.65 7.5l-2.79 2.79L3.18.44C3.51.37 3.85.41 4.15.58v-.34z"/></svg>
-          Google Play
+          <span><small>Jetzt bei</small>Google Play</span>
         </a>
       </div>
-      <p class="hero-made">Made with ♥ in <span>Austria</span></p>
+      <p class="vb-slogan">Mehr verstehen.<br>Mehr teilhaben.</p>
+      <p class="vb-made">Made with ♥ in Austria · kein Abo, keine Werbung, keine Datensammlung</p>
     </div>
 
-    <div class="phone">
-      <img src="voicebutler-screen.png"
-           alt="VoiceButler auf dem iPhone: Während der Aufnahme erscheint der gesprochene Satz „Ich weiß das du mich nicht hören kannst aber jetzt kannst du lesen was ich sage“ in großer Schrift. Darunter die Bedienleiste mit Papierkorb, Schreibtafel, Stopp-Taste und Sitzungsarchiv."
-           width="640" height="1298" loading="eager" fetchpriority="high">
-    </div>
-  </div>
+    <figure class="vb-visual">
+      <img src="vb-hero.webp"
+           alt="Eine lächelnde Frau spricht, daneben zwei iPhones mit VoiceButler: links ihr Satz „Ich weiß das du mich nicht hören kannst aber jetzt kannst du lesen was ich sage“ in großer Schrift, rechts die Schreibtafel mit Antwort-Presets wie Yes, No, Thank you und Help."
+           width="544" height="500" loading="eager" fetchpriority="high">
+      <figcaption>Bild mit KI generiert</figcaption>
+    </figure>
 
-  <div class="hero-values" role="list" aria-label="Unsere Prinzipien">
-    <div class="hv-item" role="listitem"><span>01</span>Sofort nutzbar</div>
-    <div class="hv-item" role="listitem"><span>02</span>Deine Daten bleiben deins</div>
-    <div class="hv-item" role="listitem"><span>03</span>Für alle Menschen</div>
-    <div class="hv-item" role="listitem"><span>04</span>Eine Sache. Richtig.</div>
   </div>
 </section>
-
-<div class="divider" role="separator"></div>
 
 <!-- APPS -->
 <section id="apps" aria-labelledby="apps-heading">
@@ -539,13 +654,13 @@
     <h2 id="apps-heading">Einfache Tools.<br>Echte Wirkung.</h2>
 
     <!-- VoiceButler -->
-    <article class="app-card" aria-label="VoiceButler App">
+    <article class="app-card app-card-vb" aria-label="VoiceButler App">
       <img class="app-card-icon"
            src="VoiceButler_Icon.png"
            alt="VoiceButler App-Icon"
            width="88" height="88" loading="lazy">
       <div>
-        <h3>VoiceButler</h3>
+        <h3>Voice<span class="vb-cyan">Butler</span></h3>
         <p class="app-card-desc">
           Echtzeit-Spracherkennung für iOS &amp; Android: Gesprochenes wird sofort als großer Text
           angezeigt – in 13 Sprachen, offline nutzbar, ohne Account und ohne Abo. Für gehörlose und
@@ -553,7 +668,7 @@
           für laute Umgebungen, Meetings und Präsentationen.
         </p>
         <div class="tags" aria-label="Eigenschaften">
-          <span class="tag tag-price">Einmalig 3,99 €</span>
+          <span class="tag tag-price">Einmalig 1,99 €</span>
           <span class="tag">13 Sprachen</span>
           <span class="tag">Offline-Modus</span>
           <span class="tag">Schreibtafel</span>
